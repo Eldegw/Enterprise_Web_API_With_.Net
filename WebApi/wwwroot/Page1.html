@@ -1,0 +1,39 @@
+﻿
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+   
+
+    <input type="text" id="deptId" />
+
+    <input type="button" value="Load Data" onclick="LoadData()" />
+
+    <div id="div1"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        function LoadData() {
+            var deptID = document.getElementById("deptId").value;
+            var divelme = document.getElementById("div1");
+
+            $.ajax({
+                url: "/api/department/" + deptID,
+                success: function (result) {
+                    divelme.innerHTML = result.name;
+                },
+                //error: function (xhr, status, error) {
+                //    console.log("Error: " + error);
+                //    divelme.innerHTML = "حدث خطأ في تحميل البيانات";
+                //}
+            });
+        }
+    </script>
+</body>
+</html>
